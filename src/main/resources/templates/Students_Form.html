@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        <style>
+           body {
+               font-family: Arial, sans-serif;
+               background-color: #f8f9fa;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               margin: 0;
+           }
+           .form-container {
+               background: white;
+               padding: 30px 40px;
+               border-radius: 10px;
+               box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+               width: 400px;
+           }
+           h1 {
+               text-align: center;
+               color: #007bff;
+               margin-bottom: 25px;
+           }
+           label {
+               font-weight: bold;
+               margin-bottom: 8px;
+               display: block;
+               color: #333;
+           }
+           input[type="text"],
+           input[type="email"] {
+               width: 100%;
+               padding: 10px;
+               margin-bottom: 18px;
+               border: 1px solid #ccc;
+               border-radius: 6px;
+               font-size: 14px;
+               transition: border-color 0.3s ease-in-out;
+           }
+           input[type="text"]:focus,
+           input[type="email"]:focus {
+               border-color: #007bff;
+               outline: none;
+           }
+           button {
+               width: 100%;
+               padding: 12px;
+               background-color: #007bff;
+               border: none;
+               border-radius: 6px;
+               color: white;
+               font-size: 16px;
+               font-weight: bold;
+               cursor: pointer;
+               transition: background-color 0.3s ease-in-out;
+           }
+           button:hover {
+               background-color: #0056b3;
+           }
+    </style>
+
+</head>
+<body>
+<h1>Student Details</h1>
+<form th:action="@{/stud}" method="post" th:object="${student_obj}">
+    <input type="hidden" th:field="*{id}">
+    <label>Name :</label>
+    <input type="text" th:field="*{name}" placeholder="Enter your Name">
+    <br><br>
+
+    <label>E-mail :</label>
+    <input type="email" th:field="*{email}" placeholder="Enter your Mail-id">
+    <br><br>
+
+    <label>Location :</label>
+    <input type="text" th:field="*{location}" placeholder="Enter your Location">
+    <br><br>
+
+    <label>Department :</label>
+    <input type="text" th:field="*{dept}" placeholder="Enter your Department">
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

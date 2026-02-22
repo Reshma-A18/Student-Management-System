@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9f5ff;
+        }
+
+        .btn-danger {
+            color: red;
+            font-weight: bold;
+        }
+
+        .btn-danger:hover {
+            color: darkred;
+        }
+</style>
+<body>
+<center>
+    <a href="/add">Add Students</a>
+    <br>
+    <table>
+        <th>Name</th>
+        <th>E-mail ID</th>
+        <th>Location</th>
+        <th>Department</th>
+        <th>Action</th>
+        <tr th:each="student:${students}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.location}"></td>
+            <td th:text="${student.dept}"></td>
+            <td>
+                <a th:href="@{/edit/{id}(id=${student.id})}">Edit</a>
+                <a th:href="@{/del/{id}(id=${student.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Are you sure you want to delete this detail?')">Delete</a>
+            </td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>
